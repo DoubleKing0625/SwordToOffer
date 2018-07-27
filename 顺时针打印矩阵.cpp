@@ -70,21 +70,11 @@ vector<int> printMatrix(vector<vector<int> > matrix) {
 int main(){
     vector< vector<int> > test(2, vector<int>(2, 0));
 
-//    test[0] = {1,2,3,4};
-//    test[1] = {5,6,7,8};
-//    test[2] = {9,10,11,12};
-//    test[3] = {13,14,15,16};
-
     test[0] = {1, 2};
     test[1] = {3, 4};
 
     int height = test.size();
     int width = test[0].size();
-//    for(int i = 0; i < height; i++){
-//        for(int j = 0; j < width; j++){
-//            cout << test[i][j] << endl;
-//        }
-//    }
 
     vector<int> res = printMatrix(test);
     for(int i = 0; i < height * width; i++){
