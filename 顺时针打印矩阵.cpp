@@ -18,15 +18,77 @@
 using namespace std;
 
 vector<int> printMatrix(vector<vector<int> > matrix) {
-
+    vector<int> res;
+    int height = matrix.size(), width = matrix[0].size();
+    int start_height = 0, end_height = height;
+    int start_width = 0,  end_width = width;
+    int index = 0;
+    int change_num = 0;
+    while(index < height * width){
+        // change width
+        if(change_num % 2 == 0){
+            //positive direction
+            if((change_num / 2) % 2 == 0){
+                for(int i = start_width; i < end_width; i++){
+                    res.push_back(matrix[start_height][i]);
+                    index++;
+                }
+                start_height++;
+            }
+            else{
+                for(int i = end_width - 1; i >= start_width; i--){
+                    res.push_back(matrix[end_height-1][i]);
+                    index++;
+                }
+                end_height--;
+            }
+        }
+        // change height
+        else{
+            // positive direction
+            if(((change_num - 1)  / 2) % 2 == 0){
+                for(int i = start_height; i < end_height; i++){
+                    res.push_back(matrix[i][end_width-1]);
+                    index++;
+                }
+                end_width--;
+            }
+            else{
+                for(int i = end_height - 1; i >= start_height; i--){
+                    res.push_back(matrix[i][start_width]);
+                    index++;
+                }
+                start_width++;
+            }
+        }
+        change_num++;
+    }
+    return res;
 }
+
 
 int main(){
+    vector< vector<int> > test(2, vector<int>(2, 0));
 
+//    test[0] = {1,2,3,4};
+//    test[1] = {5,6,7,8};
+//    test[2] = {9,10,11,12};
+//    test[3] = {13,14,15,16};
+
+    test[0] = {1, 2};
+    test[1] = {3, 4};
+
+    int height = test.size();
+    int width = test[0].size();
+//    for(int i = 0; i < height; i++){
+//        for(int j = 0; j < width; j++){
+//            cout << test[i][j] << endl;
+//        }
+//    }
+
+    vector<int> res = printMatrix(test);
+    for(int i = 0; i < height * width; i++){
+        cout << res[i] << endl;
+    }
     return 0;
 }
-
-
-
-
-
