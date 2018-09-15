@@ -84,15 +84,6 @@ public:
 int main(){
     Solution s;
     char* test = "+1e+";
-//    while(*test != '\0'){
-//        cout << *test << endl;
-//        test++;
-//    }
     cout << s.isNumeric(test) << endl;
     return 0;
 }
-
-
-
-
-
